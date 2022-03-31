@@ -42,7 +42,7 @@ public class Menu {
             }
 
             if (convertedChoice.equals("P")){
-                //show options to feed (m)oney, (s)elect item, and (f)inish transaction
+               purchaseMenu(); //show options to feed (m)oney, (s)elect item, and (f)inish transaction
             }
 
             if (convertedChoice.equals("E")){
@@ -61,4 +61,43 @@ public class Menu {
         }
 // to-do -- build out
     }
+
+    public void purchaseMenu() {
+
+        Scanner userInput = new Scanner (System.in);
+
+        while (shouldRun) {
+
+            //get current money from drawer class
+            //starting balance
+
+            System.out.println("*********************");
+            System.out.println("****Purchase Menu****");
+            System.out.println("(M) Feed Money");
+            System.out.println("(S) Select Item");
+            System.out.println("(F) Finish Transaction");
+            //System.out.println() current money provided
+            System.out.println("*********************");
+            System.out.println("Time to make a choice. What would you like to do?");
+            System.out.println("*********************");
+            String choiceInput = userInput.nextLine();
+
+            if (choiceInput.equals("M")){
+                System.out.println("Enter the amount would you like to add (Whole number/Integer) ");
+                // add amount to current balance (should be from the cashdrawer file)
+            }
+
+            // add a try catch to make sure input was correct
+
+
+
+
+        }
+
+
+    }
+
+
+
+
 }

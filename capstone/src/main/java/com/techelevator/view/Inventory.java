@@ -20,7 +20,7 @@ public class Inventory {
         String filePath = "catering.csv";
         File inputFile = new File(filePath);
 
-        initialInventory.put("A1", 7);
+        initialInventory.put("A1", 7);                                      //initializes inventory to the maximum 0f 7 prior to running the app
         initialInventory.put("A2", 7);
         initialInventory.put("A3", 7);
         initialInventory.put("A4", 7);
@@ -38,17 +38,18 @@ public class Inventory {
         initialInventory.put("D4", 7);
 
         try {
-            Scanner fileScanner = new Scanner(inputFile);
-            while (fileScanner.hasNextLine()){
+            Scanner fileScanner = new Scanner(inputFile);                   //converting catering.csv to an array based on comma seperation
+            while (fileScanner.hasNextLine()) {
                 String thisLine = fileScanner.nextLine();
                 String[] itemInfo = thisLine.split(",");
 
-                String itemID = itemInfo [0];
-                String itemName = itemInfo [1];
-                Double itemPrice = Double.parseDouble(itemInfo [2]);
-                String itemCategory = itemInfo [3];
+                String itemID = itemInfo[0];
+                String itemName = itemInfo[1];
+                String itemCategory = itemInfo[2];
+                Double itemPrice = Double.parseDouble(itemInfo[3]);
 
-                Product currentProduct = new Product (itemName, itemCategory, itemID, itemPrice);
+
+                Product currentProduct = new Product(itemName, itemCategory, itemID, itemPrice);  // puts all the item info into the map
 
                 itemMap.put(itemID, currentProduct);
             }
@@ -67,37 +68,40 @@ public class Inventory {
     public Map<String, Product> getItemMap() {
         return itemMap;
     }
+
     public double getItemPrice(String itemID) {
         return itemMap.get(itemID).getPrice();
     }
-public boolean checkInventory(String itemID) {
+
+    public boolean checkInventory(String itemID) {                                               //checks if theres enough items in stock to be purchased
         if (initialInventory.get(itemID) <= 0) {
             return false;
-        }else {
+        } else {
             int currentInventory = initialInventory.get(itemID);
-                currentInventory --;
-                initialInventory.put(itemID, currentInventory);
-                return true;
-        }
-}
-public String printedItems() {
-        String printStr = "";
-
-    Set<String> IDs = initialInventory.keySet();
-
-    List<String> orderedIDs = Arrays.asList(IDs.toArray(new String[0]));
-    orderedIDs.sort(null);
-
-    for (int i =0 ; i < orderedIDs.size(); i ++) {
-        String ID = orderedIDs.get(i);
-
-        if (initialInventory.get(ID) > 0) {
-            printStr += "\n" + itemMap.get(ID).getItemID() + " " + itemMap.get(ID).getItemName() +
-                    " $" + String.format("%f", itemMap.get(ID).getPrice()) + " ," + initialInventory.get(ID);
-
+            currentInventory--;
+            initialInventory.put(itemID, currentInventory);
+            return true;
         }
     }
-return printStr;
+
+    public String printedItems() {
+        String printStr = "";
+
+        Set<String> IDs = initialInventory.keySet();
+
+        List<String> orderedIDs = Arrays.asList(IDs.toArray(new String[0]));
+        orderedIDs.sort(null);
+
+        for (int i = 0; i < orderedIDs.size(); i++) {
+            String ID = orderedIDs.get(i);
+
+            if (initialInventory.get(ID) > 0) {
+                printStr += "\n" + itemMap.get(ID).getItemID() + " " + itemMap.get(ID).getItemName() +
+                        " $" + String.format("%.2f", itemMap.get(ID).getPrice()) + " ," + initialInventory.get(ID);
+
+            }
+        }
+        return printStr;
     }
 
 }
