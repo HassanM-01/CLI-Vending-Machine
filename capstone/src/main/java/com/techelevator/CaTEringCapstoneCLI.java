@@ -29,6 +29,8 @@ after item is despensed balance must be updated and costumer returned to the pur
 
 	public void run() {
 		while (true) {
+			menu.run();
+
 			//  to do -- build out main menu
 
 		}
