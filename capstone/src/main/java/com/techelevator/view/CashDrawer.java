@@ -33,6 +33,6 @@ public class CashDrawer {
     }
     // maybe do coins???
     public String returnChange() {
-        return "Your remaining change is : " + balance;
+        return "Your remaining change is : $" + balance;
     }
 }
