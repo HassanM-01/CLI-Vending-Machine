@@ -1,5 +1,7 @@
 package com.techelevator.view;
 
+import com.sun.tools.javac.Main;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -12,7 +14,10 @@ call cash drawer class to show money avaliable
  */
 public class Menu {
     public boolean shouldRun = true;
-
+    public static CateringMachine cateringMachine = new CateringMachine();
+    public static void main(String[] args) {
+        cateringMachine.getMenu().run();
+    }
     public void run() {
 
         Scanner userInput = new Scanner(System.in);
@@ -33,7 +38,7 @@ public class Menu {
 
 
             if (convertedChoice.equals("D")){                            //more validation witch choice conditional statements
-                System.out.println(CateringMachine.); //display menu items
+                System.out.println(Menu.cateringMachine.getCurrentInventory().printedItems()); //display menu items
             }
 
             if (convertedChoice.equals("P")){

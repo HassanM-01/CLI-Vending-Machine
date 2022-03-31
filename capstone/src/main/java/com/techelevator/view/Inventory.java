@@ -2,9 +2,7 @@ package com.techelevator.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /*
 STOCK hash map with EX> A1, quantity 7
@@ -69,8 +67,37 @@ public class Inventory {
     public Map<String, Product> getItemMap() {
         return itemMap;
     }
+    public double getItemPrice(String itemID) {
+        return itemMap.get(itemID).getPrice();
+    }
+public boolean checkInventory(String itemID) {
+        if (initialInventory.get(itemID) <= 0) {
+            return false;
+        }else {
+            int currentInventory = initialInventory.get(itemID);
+                currentInventory --;
+                initialInventory.put(itemID, currentInventory);
+                return true;
+        }
+}
+public String printedItems() {
+        String printStr = "";
 
+    Set<String> IDs = initialInventory.keySet();
 
+    List<String> orderedIDs = Arrays.asList(IDs.toArray(new String[0]));
+    orderedIDs.sort(null);
 
+    for (int i =0 ; i < orderedIDs.size(); i ++) {
+        String ID = orderedIDs.get(i);
+
+        if (initialInventory.get(ID) > 0) {
+            printStr += "\n" + itemMap.get(ID).getItemID() + " " + itemMap.get(ID).getItemName() +
+                    " $" + String.format("%f", itemMap.get(ID).getPrice()) + " ," + initialInventory.get(ID);
+
+        }
+    }
+return printStr;
+    }
 
 }
