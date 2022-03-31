@@ -69,8 +69,9 @@ public class Menu {
         while (shouldRun) {
 
             //get current money from drawer class
+            double currentAmount = Menu.cateringMachine.getCurrentDrawer().getBalance();
             //starting balance
-
+            double currentBalance = currentAmount;
             System.out.println("*********************");
             System.out.println("****Purchase Menu****");
             System.out.println("(M) Feed Money");
@@ -84,9 +85,47 @@ public class Menu {
 
             if (choiceInput.equals("M")){
                 System.out.println("Enter the amount would you like to add (Whole number/Integer) ");
-                // add amount to current balance (should be from the cashdrawer file)
-            }
+                int cashDeposit = 0;
+                double initialBalance = currentBalance;
 
+                try {
+                    cashDeposit = Integer.parseInt(userInput.nextLine());
+
+                } catch (Exception e) {
+                    System.out.println("Please enter: 1, 5, 10, 20");
+                }
+                if (cashDeposit < 1) {
+                    System.out.println("Please enter: 1, 5, 10, 20");
+            }
+                if (cashDeposit == 1 || cashDeposit == 5 || cashDeposit == 10 || cashDeposit == 20) {
+                    Menu.cateringMachine.getCurrentDrawer().addCash(cashDeposit);
+                    System.out.println("Deposited: " + cashDeposit);
+                    currentAmount = Menu.cateringMachine.getCurrentDrawer().getBalance();
+                    System.out.println(currentAmount);
+                    //add method to log transaction to audit.txt
+
+                } else {
+                    System.out.println("Please enter: 1, 5, 10, 20 ");
+                } }
+            else if (choiceInput.equals("S")) {
+                System.out.println("Which item? ");
+                System.out.println(Menu.cateringMachine.getCurrentInventory().printedItems());
+                System.out.println("Enter item ID: ");
+                String idInput = userInput.nextLine().toUpperCase();
+
+                if (!Menu.cateringMachine.getCurrentInventory().getInitialInventory().containsKey(idInput)) {
+                    System.out.println("Not valid item ID, try again.");
+
+                } else {
+                    if (!Menu.cateringMachine.getCurrentDrawer().verifyPrice(idInput)) {
+                        System.out.println("Not enough money.");
+                    } else if (!Menu.cateringMachine.getCurrentInventory().checkInventory(idInput)) {
+                        System.out.println("Product is sold out.");
+                    }
+                }
+
+            }
+// add amount to current balance (should be from the cashdrawer file)
             // add a try catch to make sure input was correct
 
 

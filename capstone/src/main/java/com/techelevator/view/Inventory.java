@@ -73,7 +73,7 @@ public class Inventory {
         return itemMap.get(itemID).getPrice();
     }
 
-    public boolean checkInventory(String itemID) {                                               //checks if theres enough items in stock to be purchased
+    public boolean checkInventory(String itemID) {          //checks if theres enough items in stock to be purchased
         if (initialInventory.get(itemID) <= 0) {
             return false;
         } else {
