@@ -12,8 +12,6 @@ public class CashDrawer {
 
     private double balance = 0.00;
 
-    public CashDrawer() {}
-
     public void addCash(double input) {   //add deposit method
         if (input > 0) {
             this.balance += input;

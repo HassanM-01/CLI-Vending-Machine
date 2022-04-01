@@ -108,7 +108,7 @@ public class Menu {
                         currentAmount = Menu.cateringMachine.getCurrentDrawer().getBalance();
                         System.out.println("$ " + currentAmount);                   //System.out.println() current money provided
 
-                        Menu.cateringMachine.audit(initialBalance, currentAmount, "Enter money");       //add audit method from cateringmachine class to log the transaction
+                        Menu.cateringMachine.logger(initialBalance, currentAmount, "Enter money");       //add audit method from cateringmachine class to log the transaction
 
                     } else {
                         System.out.println("Please enter: 1, 5, 10, 20 ");     //more defensive programming
@@ -135,8 +135,8 @@ public class Menu {
                         System.out.println(currentItem.getItemName() + " Cost: $" + String.format("%.2f", currentItem.getPrice()) + " Balance: $" + String.format("%.2f", Menu.cateringMachine.getCurrentDrawer().getBalance()));
                         System.out.println(currentItem.getSound());
 
-                        //currentAmount = Menu.cateringMachine.getCurrentDrawer().getBalance();        //try to move around the if statments so that we are coding for what we're looking for first
-                        //Menu.cateringMachine.audit();// audit methods
+                        currentAmount = Menu.cateringMachine.getCurrentDrawer().getBalance();        //try to move around the if statments so that we are coding for what we're looking for first
+                        Menu.cateringMachine.logger(currentBalance, currentAmount, currentItem.getItemName() + " " + currentItem.getItemID());// audit methods
 
 
                     }
@@ -154,7 +154,7 @@ public class Menu {
 
                     //audit method
                     currentAmount = Menu.cateringMachine.getCurrentDrawer().getBalance();
-                    Menu.cateringMachine.audit(initialBalance, currentAmount, "Change Returned");
+                    Menu.cateringMachine.logger(initialBalance, currentAmount,"Change Returned");
 
                     return;
 

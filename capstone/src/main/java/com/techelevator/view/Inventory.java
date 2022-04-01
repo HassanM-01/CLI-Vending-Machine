@@ -12,8 +12,8 @@ make map with slot #, price , catagory and name
  */
 public class Inventory {
 
-    private static Map<String, Integer> initialInventory = new HashMap<>();  //initializing maps for both the stock w quantity and one with complete item info
-    private Map<String, Product> itemMap = new HashMap<>();
+    private static final Map<String, Integer> initialInventory = new HashMap<>();  //initializing maps for both the stock w quantity and one with complete item info
+    private final Map<String, Product> itemMap = new HashMap<>();
 
 
     public Inventory() {

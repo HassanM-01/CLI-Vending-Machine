@@ -15,7 +15,7 @@ after item is despensed balance must be updated and costumer returned to the pur
 
  */
 
-	private Menu menu;
+	private final Menu menu;
 
 	public CaTEringCapstoneCLI(Menu menu) {
 		this.menu = menu;
