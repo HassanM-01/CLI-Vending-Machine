@@ -143,7 +143,7 @@ public class Menu {
                 CashDrawer drawer = Menu.cateringMachine.getCurrentDrawer();
                 System.out.println("Take your money back.");
                 String change = Menu.cateringMachine.getCurrentDrawer().returnChange();
-                System.out.println();
+                System.out.println(drawer.returnChange());
 
 
                 //audit method
