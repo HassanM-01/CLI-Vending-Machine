@@ -40,7 +40,7 @@ public class Inventory {
         try {
             Scanner fileScanner = new Scanner(inputFile);                   //converting catering.csv to an array based on comma seperation
             while (fileScanner.hasNextLine()) {
-                String thisLine = fileScanner.nextLine();
+                String thisLine = fileScanner.nextLine();                   //used while loop to add all items from the .csv file into an array than map
                 String[] itemInfo = thisLine.split(",");
 
                 String itemID = itemInfo[0];
@@ -76,6 +76,7 @@ public class Inventory {
     public boolean checkInventory(String itemID) {          //checks if theres enough items in stock to be purchased
         if (initialInventory.get(itemID) <= 0) {
             return false;
+
         } else {
             int currentInventory = initialInventory.get(itemID);
             currentInventory--;
@@ -84,7 +85,7 @@ public class Inventory {
         }
     }
 
-    public String printedItems() {
+    public String printedItems() {                          //displays inventory to user when they select either "display items" or " select item"
         String printStr = "";
 
         Set<String> IDs = initialInventory.keySet();

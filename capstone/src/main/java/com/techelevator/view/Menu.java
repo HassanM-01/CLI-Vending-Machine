@@ -14,7 +14,7 @@ if user input is not valid
 call cash drawer class to show money avaliable
  */
 public class Menu {
-    public boolean shouldRun = true;
+   // public boolean shouldRun = true;
     public static CateringMachine cateringMachine = new CateringMachine(); //instantiating cateringmachine class
 
     public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class Menu {
 
         Scanner userInput = new Scanner(System.in);
 
-        while (shouldRun) {
+        while (true) {
 
             System.out.println("***************************");      //Display initial user menu
             System.out.println("         Main Menu         ");
@@ -50,7 +50,7 @@ public class Menu {
 
             if (convertedChoice.equals("E")) {
                                                             //exit program and stop running
-                shouldRun = false;
+                //shouldRun = false;
                 System.out.println("Goodbye!");
                 System.exit(1);
 
@@ -70,12 +70,12 @@ public class Menu {
 
         Scanner userInput = new Scanner(System.in);
 
-        while (shouldRun) {
+        while (true) {
 
             //get current money from drawer class
             double currentAmount = Menu.cateringMachine.getCurrentDrawer().getBalance();
             //starting balance
-            double currentBalance = currentAmount;
+            double currentBalance = currentAmount;  // made for ease of use
             System.out.println("*********************");
             System.out.println("****Purchase Menu****");
             System.out.println("(M) Feed Money");
@@ -87,14 +87,14 @@ public class Menu {
             System.out.println("*********************");
             String choiceInput = userInput.nextLine();
 
-            switch (choiceInput.toUpperCase()) {
+            switch (choiceInput.toUpperCase().trim()) {
                 case "M": {
                     System.out.println("Enter the amount would you like to add (Whole number/Integer) ");
                     int cashDeposit = 0;
                     double initialBalance = currentBalance;
 
                     try {
-                        cashDeposit = Integer.parseInt(userInput.nextLine());   //converts user input of a string to an integer
+                        cashDeposit = Integer.parseInt(userInput.nextLine().trim());   //converts user input of a string to an integer
 
                     } catch (Exception e) {
                         System.out.println("Please enter: 1, 5, 10, 20");
@@ -119,7 +119,7 @@ public class Menu {
                     System.out.println("Which item? ");
                     System.out.println(Menu.cateringMachine.getCurrentInventory().printedItems()); //print menu items from method in inventory class
                     System.out.println("Enter item ID: ");
-                    String idInput = userInput.nextLine().toUpperCase();                            //convert string to uppercase
+                    String idInput = userInput.nextLine().toUpperCase().trim();                            //convert string to uppercase
 
                     if (!Menu.cateringMachine.getCurrentInventory().getInitialInventory().containsKey(idInput)) {
                         System.out.println("Not valid item ID, try again.");

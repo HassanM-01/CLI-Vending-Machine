@@ -6,7 +6,6 @@ public class Product {
     private final String itemCategory;
     private final String itemID;
     private final double price;
-    private String sound;
 
     public Product (String itemName, String itemCategory, String itemID, double price ){
         this.itemName = itemName;
@@ -19,18 +18,19 @@ public class Product {
 
     public String toMunch() {
 
+        String sound;
         if(this.itemCategory.equals("Dessert")) {
-            this.sound = "Sugar Sugar, so Sweet!";
+            sound = "Sugar Sugar, so Sweet!";
         } else if(this.itemCategory.equals("Munchy")) {
-            this.sound = "Munchy Munchy, so Good!";
+            sound = "Munchy Munchy, so Good!";
         } else if(this.itemCategory.equals("Sandwich")) {
-            this.sound = "Sandwich So Delicious, Yum!";
+            sound = "Sandwich So Delicious, Yum!";
         } else if(this.itemCategory.equals("Drink")) {
-            this.sound = "Drinky Drinky, Slurp Slurp!";
+            sound = "Drinky Drinky, Slurp Slurp!";
         } else {
-            this.sound = "Tastes like McGarbage! ";
+            sound = "Tastes like McGarbage! ";
         }
-        return this.sound;
+        return sound;
     }
     //add sounds for each type of item crunch crunch, munch munch, etc.
 
